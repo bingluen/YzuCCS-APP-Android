@@ -9,16 +9,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_section3"
-        android:id="@+id/section3_page_title"
+        android:text="@string/title_section2"
+        android:id="@+id/section2_page_title"
         android:layout_gravity="center_horizontal"
         android:textSize="@dimen/large_text_size" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/section3_keyword"
-        android:id="@+id/section3_keyword_textview"
+        android:text="@string/section2_keyword"
+        android:id="@+id/section2_keyword_textview"
         android:textSize="@dimen/plain_text_size" />
 
     <EditText
