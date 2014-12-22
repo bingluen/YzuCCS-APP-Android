@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">元智大選課模擬系統</string>
+    <string name="title_section1">我的課表</string>
+    <string name="title_section2">選課模擬</string>
+    <string name="title_section3">課程查詢</string>
+    <string name="section3_keyword">關鍵字</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="day1">Mon.</string>
+    <string name="day2">Tue.</string>
+    <string name="day3">Wed.</string>
+    <string name="day4">Thu.</string>
+    <string name="day5">Fri.</string>
+    <string name="day6">Sat.</string>
+
+
+</resources>
