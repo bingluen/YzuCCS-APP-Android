@@ -171,4 +171,70 @@ public class AccessDatabase {
 
         return result;
     }
+
+    //byTeacher
+    public List<CourseObject> getbyTeacher(String key) {
+        List<CourseObject> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME, null, "teacher LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
+    public List<CourseObject> getbyCode(String key) {
+        List<CourseObject> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME, null, "code LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
+    public List<CourseObject> getbyTime(String key) {
+        List<CourseObject> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME, null, "time LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
+    public List<CourseObject> getbyName(String key) {
+        List<CourseObject> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME, null, "cname LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
+    public List<CourseObject> getbyFullTextSearch(String key) {
+        List<CourseObject> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME, null, "cname LIKE ?, teacher LIKE ?, time LIKE ?, code LIKE ?", new String[]{"%"+key+"%", "%"+key+"%", "%"+key+"%", "%"+key+"%"}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
 }

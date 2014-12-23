@@ -2,6 +2,7 @@ package net.erickson.yzucss_app;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import net.erickson.yzucss_app.Activitys.SearchCourse;
 import net.erickson.yzucss_app.fragment.PlaceholderFragment;
 
 
@@ -101,6 +103,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
         mViewPager.setCurrentItem(tab.getPosition());
+
+        switch (tab.getPosition() + 1)
+        {
+            case 1:
+                break;
+            case 2:
+                startActivity(new Intent(MainActivity.this, SearchCourse.class));
+                break;
+        }
+
     }
 
     @Override
