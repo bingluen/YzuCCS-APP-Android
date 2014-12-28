@@ -36,6 +36,16 @@ public class PlaceholderFragment extends Fragment {
         }
         fragment.setArguments(args);
         return fragment;
+        /*
+                switch (tab.getPosition() + 1)
+        {
+            case 1:
+                break;
+            case 2:
+                startActivity(new Intent(MainActivity.this, SearchCourse.class));
+                break;
+        }
+        */
     }
 
     public PlaceholderFragment() {

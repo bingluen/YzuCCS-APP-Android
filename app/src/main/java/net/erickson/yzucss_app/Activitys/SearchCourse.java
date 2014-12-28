@@ -2,11 +2,9 @@ package net.erickson.yzucss_app.Activitys;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 import net.erickson.yzucss_app.DataObjects.CourseObject;
@@ -19,13 +17,14 @@ import java.util.List;
 /**
  * Created by Erickson on 2014/12/22.
  */
-public class SearchCourse extends Activity {
+public class SearchCourse extends FragmentActivity {
     private EditText searchKeyWord;
 
     public void onCreate (Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        searchKeyWord = (EditText) findViewById(R.id.section_keyword_field);
+        //searchKeyWord = (EditText) findViewById(R.id.section_keyword_field);
+        /*
         searchKeyWord.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -44,5 +43,6 @@ public class SearchCourse extends Activity {
 
             }
         });
+        */
     }
 }
