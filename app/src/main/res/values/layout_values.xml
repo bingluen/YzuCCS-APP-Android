@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="searchEditTextWidth">220dp</dimen>
+    <dimen name="searchEditTextHight">32dp</dimen>
+    <dimen name="searchEditTextMargin">10dp</dimen>
+    <dimen name="searchEditTextPadding">5dp</dimen>
+    <dimen name="searchEditTextSize">15sp</dimen>
+</resources>
