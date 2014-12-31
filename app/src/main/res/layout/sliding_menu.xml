@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:background="@color/slidingMenuBackground"
-    android:id="@+id/sliding_menu"
     android:gravity="left">
 
     <LinearLayout
@@ -10,5 +9,24 @@
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:gravity="left"
-        android:layout_gravity="left"></LinearLayout>
+        android:id="@+id/sliding_menu">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/myCourseTableTitleText"
+            android:id="@+id/myCourseTableListTitle"
+            android:textColor="@color/menuListTitle"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/myCourseTableTitleTextSize"
+            android:padding="@dimen/myCourseTableTitleTextPadding"
+            android:drawableLeft="@drawable/ic_person_white_24dp"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/horizontalLineThickness"
+            android:background="@color/horizontalLineColor"
+            android:layout_margin="@dimen/horizontalLineMargin"/>
+
+    </LinearLayout>
+
 </LinearLayout>

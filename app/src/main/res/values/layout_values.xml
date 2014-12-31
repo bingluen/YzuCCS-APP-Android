@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="searchEditTextWidth">220dp</dimen>
-    <dimen name="searchEditTextHight">32dp</dimen>
+    <dimen name="searchEditTextHeight">32dp</dimen>
     <dimen name="searchEditTextMargin">10dp</dimen>
     <dimen name="searchEditTextPadding">5dp</dimen>
     <dimen name="searchEditTextSize">15sp</dimen>
+    
+    <dimen name="horizontalLineThickness">1dp</dimen>
+    <dimen name="horizontalLineMargin">2dp</dimen>
+
+    <dimen name="myCourseTableTitleTextSize">15sp</dimen>
+    <dimen name="myCourseTableTitleTextPadding">5dp</dimen>
 </resources>

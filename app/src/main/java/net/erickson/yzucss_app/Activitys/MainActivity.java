@@ -1,8 +1,13 @@
 package net.erickson.yzucss_app.Activitys;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,6 +47,9 @@ public class MainActivity extends Activity{
         button.setText(R.string.addTableButton);
         button.setBackground(null);
         button.setTextColor(getResources().getColor(R.color.menuButtonText));
+        button.setGravity(Gravity.LEFT);
+        button.setGravity(Gravity.CENTER_VERTICAL);
+        button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_grey600_18dp, 0, 0, 0);
         v.addView(button);
     }
 

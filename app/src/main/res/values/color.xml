@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="app_name">#FFEAF0FF</color>
+
     <color name="mainBackground">#FFF</color>
     <color name="searchBackground">#AADDDDDD</color>
     <color name="barBackground">#ff5dc192</color>
+
     <color name="slidingMenuBackground">#de0c0f0d</color>
     <color name="menuButtonText">#B0E2FFE4</color>
-    <color name="app_name">#FFEAF0FF</color>
+    <color name="menuListTitle">#B0E2FFE4</color>
+    
+    <color name="horizontalLineColor">#de5a605e</color>
 </resources>

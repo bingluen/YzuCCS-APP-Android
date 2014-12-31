@@ -11,4 +11,5 @@
     <string name="day6">Sat.</string>
     <string name="addTableButton">新增課表</string>
     <string name="searchHintWord">輸入關鍵字搜尋課程</string>
+    <string name="myCourseTableTitleText">我的課表</string>
 </resources>
