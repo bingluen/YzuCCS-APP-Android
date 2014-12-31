@@ -25,7 +25,7 @@ public class AccessDatabase {
     public static final String NAME_COLUMN = "cname";
     public static final String YEAR_COLUMN = "year";
     public static final String DEGREE_COLUMN = "degree";
-    public static final String TEACHER_COLUMN = "professor";
+    public static final String TEACHER_COLUMN = "teacher";
     public static final String TIME_COLUMN = "time";
 
     // 使用上面宣告的變數建立表格的SQL指令
@@ -228,7 +228,7 @@ public class AccessDatabase {
     public List<CourseObject> getbyFullTextSearch(String key) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "cname LIKE ?, teacher LIKE ?, time LIKE ?, code LIKE ?", new String[]{"%"+key+"%", "%"+key+"%", "%"+key+"%", "%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "cname LIKE ? OR teacher LIKE ? OR time LIKE ? OR code LIKE ? LIMIT 50", new String[]{"%"+key+"%", "%"+key+"%", "%"+key+"%", "%"+key+"%"}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));

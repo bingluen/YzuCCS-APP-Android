@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import net.erickson.yzucss_app.DataObjects.CourseRawData;
+
 /**
  * Created by Erickson on 2014/12/22.
  */
@@ -35,6 +37,9 @@ public class EJSQLHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // 建立應用程式需要的表格
         db.execSQL(AccessDatabase.CREATE_TABLE);
+        // 建立初始資料
+        for(int i = 0; i < CourseRawData.RAW_DATA_SQL.length; i++)
+            db.execSQL(CourseRawData.RAW_DATA_SQL[i]);
     }
 
     @Override
