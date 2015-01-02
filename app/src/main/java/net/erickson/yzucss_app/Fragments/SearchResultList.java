@@ -1,12 +1,15 @@
 package net.erickson.yzucss_app.Fragments;
 
-import android.app.ListFragment;
+
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import net.erickson.yzucss_app.DataObjects.CourseAdapter;
+import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.R;
 
 import java.util.List;
@@ -16,7 +19,8 @@ import java.util.List;
  */
 public class SearchResultList extends ListFragment {
 
-    private List searchResult;
+    private List<CourseObject> searchResult;
+    private CourseAdapter courseAdapter;
 
     public SearchResultList(List result)
     {
@@ -29,7 +33,8 @@ public class SearchResultList extends ListFragment {
         super.onCreate(savedInstanceState);
         if(searchResult.size() > 0)
         {
-
+            courseAdapter = new CourseAdapter(getActivity().getLayoutInflater(), searchResult);
+            setListAdapter(courseAdapter);
         }
     }
 
@@ -37,7 +42,7 @@ public class SearchResultList extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View View = inflater.inflate(R.layout.search_result_list, container, false);
+        View View = inflater.inflate(R.layout.list, container, false);
         return View;
     }
 

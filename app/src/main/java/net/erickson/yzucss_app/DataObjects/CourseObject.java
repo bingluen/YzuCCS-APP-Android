@@ -12,9 +12,10 @@ public class CourseObject {
     private CharSequence degree;
     private CharSequence year;
 
-    public CourseObject(CharSequence name, CharSequence code,
+    public CourseObject(long id, CharSequence name, CharSequence code,
                         CharSequence teacher, CharSequence time,
                         CharSequence degree, CharSequence year) {
+        this.id = id;
         this.name = name;
         this.code = code;
         this.teacher = teacher;

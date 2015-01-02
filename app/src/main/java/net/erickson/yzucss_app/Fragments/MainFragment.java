@@ -1,8 +1,9 @@
 package net.erickson.yzucss_app.Fragments;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -43,9 +44,11 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
     {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+        //側邊欄
         slidingButton = (ImageButton) rootView.findViewById(R.id.sliding_menu_button);
         slidingButton.setOnClickListener(this);
 
+        //搜尋功能啟用
         searchKeyWord = (EditText) rootView.findViewById(R.id.search_key_word);
         searchKeyWord.addTextChangedListener(this);
 
@@ -72,17 +75,19 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+        List<CourseObject> result = new ArrayList<>();
         if(count > 0)
         {
-            List<CourseObject> result = new ArrayList<>();
             doSearchCourse searchHelper = new doSearchCourse(getActivity());
             result = searchHelper.search(s.toString());
 
-            SearchResultList displayResult = new SearchResultList(result);
-            transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_Content, displayResult).commit();
-
+        } else {
+            result.clear();
         }
+
+        SearchResultList displayResult = new SearchResultList(result);
+        transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_Content, displayResult).commit();
 
     }
 

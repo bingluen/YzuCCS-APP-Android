@@ -5,10 +5,16 @@
     <dimen name="searchEditTextMargin">10dp</dimen>
     <dimen name="searchEditTextPadding">5dp</dimen>
     <dimen name="searchEditTextSize">15sp</dimen>
-    
+
     <dimen name="horizontalLineThickness">1dp</dimen>
     <dimen name="horizontalLineMargin">2dp</dimen>
 
     <dimen name="myCourseTableTitleTextSize">15sp</dimen>
     <dimen name="myCourseTableTitleTextPadding">5dp</dimen>
+    <dimen name="myCourseTableListTextSize">12sp</dimen>
+
+
+    <dimen name="searchResultRowHeight">40dp</dimen>
+    <dimen name="searchResultRowTextSize">12sp</dimen>
+    <dimen name="searchResultRowPadding">3dp</dimen>
 </resources>

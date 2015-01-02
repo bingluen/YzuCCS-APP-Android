@@ -1,22 +1,19 @@
 package net.erickson.yzucss_app.Activitys;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.navdrawer.SimpleSideDrawer;
 
 import net.erickson.yzucss_app.Fragments.MainFragment;
 import net.erickson.yzucss_app.R;
 
-public class MainActivity extends Activity{
+public class MainActivity extends FragmentActivity {
+
 
     private LinearLayout SlidingMenuContent;
 
@@ -35,7 +32,11 @@ public class MainActivity extends Activity{
 
         //填充Fragment
         MainFragment mainFragment = new MainFragment(mSlidingMenu);
-        getFragmentManager().beginTransaction().replace(R.id.main_layout, mainFragment).commit();
+        /*
+        * 為了支援4.X的裝置要改用這個方式來取得FragmentManager(配合FragmentActivity)
+        * 若純5.0app則可直接使用getFragmentManager + Activity
+        */
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, mainFragment).commit();
 
 
     }
@@ -47,6 +48,7 @@ public class MainActivity extends Activity{
         button.setText(R.string.addTableButton);
         button.setBackground(null);
         button.setTextColor(getResources().getColor(R.color.menuButtonText));
+        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.myCourseTableListTextSize));
         button.setGravity(Gravity.LEFT);
         button.setGravity(Gravity.CENTER_VERTICAL);
         button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_grey600_18dp, 0, 0, 0);
