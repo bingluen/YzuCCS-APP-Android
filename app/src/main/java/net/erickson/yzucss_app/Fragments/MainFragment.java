@@ -26,6 +26,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     private ImageButton slidingButton;
     private EditText searchKeyWord;
+    private SearchResultList displayResult = new SearchResultList();
+    private List<CourseObject> result;
+
     FragmentTransaction transaction;
 
     public MainFragment()
@@ -75,25 +78,21 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        List<CourseObject> result = new ArrayList<>();
-        if(count > 0)
+        if(s.length() > 0)
         {
             doSearchCourse searchHelper = new doSearchCourse(getActivity());
             result = searchHelper.search(s.toString());
-
         } else {
-            result.clear();
+            result = new ArrayList<>();
         }
 
-        SearchResultList displayResult = new SearchResultList(result);
+        displayResult.setResult(result);
         transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_Content, displayResult).commit();
-
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-
     }
 
 

@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:baselineAligned="false">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/searchResultRowCodeWidth"
         android:layout_height="@dimen/searchResultRowHeight"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_code" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/searchResultRowDegreeWidth"
         android:layout_height="@dimen/searchResultRowHeight"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_degree" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/searchResultRowNameWidth"
         android:layout_height="@dimen/searchResultRowHeight"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_name" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/searchResultRowTeacherWidth"
         android:layout_height="@dimen/searchResultRowHeight"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_professor" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/searchResultRowTimeWidth"
         android:layout_height="@dimen/searchResultRowHeight"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_time"/>
+        android:id="@+id/search_result_row_view_course_time" />
 </LinearLayout>

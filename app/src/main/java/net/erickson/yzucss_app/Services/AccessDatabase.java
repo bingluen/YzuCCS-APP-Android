@@ -150,11 +150,12 @@ public class AccessDatabase {
         CourseObject result = new CourseObject();
 
         result.setId(cursor.getLong(0));
-        result.setName(cursor.getString(1));
-        result.setYear(cursor.getString(2));
-        result.setDegree(cursor.getString(3));
-        result.setTeacher(cursor.getString(4));
-        result.setTime(cursor.getString(5));
+        result.setCode(cursor.getString(1));
+        result.setName(cursor.getString(2));
+        result.setYear(cursor.getString(3));
+        result.setDegree(cursor.getString(4));
+        result.setTeacher(cursor.getString(5));
+        result.setTime(cursor.getString(6));
 
         // 回傳結果
         return result;

@@ -22,7 +22,11 @@ public class SearchResultList extends ListFragment {
     private List<CourseObject> searchResult;
     private CourseAdapter courseAdapter;
 
-    public SearchResultList(List result)
+    public SearchResultList()
+    {
+    }
+
+    public void setResult(List result)
     {
         searchResult = result;
     }
@@ -31,10 +35,13 @@ public class SearchResultList extends ListFragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if(searchResult.size() > 0)
+        if(searchResult != null && searchResult.size() > 0)
         {
             courseAdapter = new CourseAdapter(getActivity().getLayoutInflater(), searchResult);
             setListAdapter(courseAdapter);
+        } else {
+            //清空
+            setListAdapter(null);
         }
     }
 

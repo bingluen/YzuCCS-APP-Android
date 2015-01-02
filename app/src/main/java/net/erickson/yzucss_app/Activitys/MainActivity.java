@@ -38,9 +38,7 @@ public class MainActivity extends FragmentActivity {
         */
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, mainFragment).commit();
 
-
     }
-
 
     private void loadList(LinearLayout v)
     {
