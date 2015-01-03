@@ -12,7 +12,6 @@ import net.erickson.yzucss_app.DataObjects.UserTableObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Erickson on 2015/1/3.
@@ -190,6 +189,8 @@ public class AccessUserTableDatabase {
         result.setComment(cursor.getString(2));
         result.setYear(cursor.getString(3));
 
+        cursor.close();
+
         //get course detail and add to result
         cursor = db.rawQuery(
                 "SELECT * FROM "+ AccessCourseDatabase.TABLE_NAME +
@@ -199,7 +200,7 @@ public class AccessUserTableDatabase {
                         " AND " + AccessCourseDatabase.YEAR_COLUMN + "= ?"
                 , new String[] { Long.toString(id), result.getYear().toString() });
 
-        result.setCourseList(new ArrayList<>());
+        result.setCourseList(new ArrayList<CourseObject>());
 
         while (cursor.moveToFirst())
         {
@@ -216,18 +217,22 @@ public class AccessUserTableDatabase {
             result.getCourseList().add(course);
         }
 
+        cursor.close();
+
         //get table occupied
         cursor = db.rawQuery(
                 "SELECT "+ OCCUPIED_TIME_COLUMN + " FROM " + OCCUPIED_TABLE_NAME +
                         " WHERE " + OCCUPIED_LIST_ID_COLUMN + "= ?"
                 , new String[] { Long.toString(id) });
 
-        result.setOccupiedTime(new ArrayList<>());
+        result.setOccupiedTime(new ArrayList<String>());
 
         while (cursor.moveToFirst())
         {
             result.getTimeOccupied().add(cursor.getString(0));
         }
+
+        cursor.close();
 
         return result;
 
@@ -242,6 +247,8 @@ public class AccessUserTableDatabase {
             result = cursor.getInt(0);
         }
 
+        cursor.close();
+
         return result;
     }
 
@@ -254,6 +261,8 @@ public class AccessUserTableDatabase {
             result = cursor.getInt(0);
         }
 
+        cursor.close();
+
         return result;
     }
 
@@ -264,6 +273,8 @@ public class AccessUserTableDatabase {
         if (cursor.moveToNext()) {
             result = cursor.getInt(0);
         }
+
+        cursor.close();
 
         return result;
     }
@@ -278,6 +289,8 @@ public class AccessUserTableDatabase {
             result = cursor.getInt(0);
         }
 
+        cursor.close();
+
         return result;
     }
 
@@ -288,6 +301,8 @@ public class AccessUserTableDatabase {
         if (cursor.moveToNext()) {
             result = cursor.getInt(0);
         }
+
+        cursor.close();
 
         return result;
     }

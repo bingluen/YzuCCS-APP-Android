@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import net.erickson.yzucss_app.DataObjects.CourseRawData;
+import net.erickson.yzucss_app.Resource.CourseRawData;
 
 /**
  * Created by Erickson on 2014/12/22.

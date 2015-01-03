@@ -1,15 +1,13 @@
-package net.erickson.yzucss_app.DataObjects;
+package net.erickson.yzucss_app.Adapter;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

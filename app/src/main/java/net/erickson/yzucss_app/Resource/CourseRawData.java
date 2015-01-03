@@ -1,4 +1,4 @@
-package net.erickson.yzucss_app.DataObjects;
+package net.erickson.yzucss_app.Resource;
 
 /**
  * Created by Erickson on 2015/1/1.

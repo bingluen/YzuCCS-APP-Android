@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import net.erickson.yzucss_app.DataObjects.CourseAdapter;
+import net.erickson.yzucss_app.Adapter.CourseAdapter;
 import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.R;
 
@@ -26,7 +26,7 @@ public class SearchResultList extends ListFragment {
     {
     }
 
-    public void setResult(List result)
+    public void setResult(List<CourseObject> result)
     {
         searchResult = result;
     }
@@ -49,8 +49,7 @@ public class SearchResultList extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View View = inflater.inflate(R.layout.list, container, false);
-        return View;
+        return inflater.inflate(R.layout.list, container, false);
     }
 
     @Override
