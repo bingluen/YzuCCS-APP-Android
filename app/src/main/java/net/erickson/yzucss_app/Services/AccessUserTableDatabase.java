@@ -7,10 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.DataObjects.SelectedCourseObject;
+import net.erickson.yzucss_app.DataObjects.UserTableListItem;
 import net.erickson.yzucss_app.DataObjects.UserTableObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Erickson on 2015/1/3.
@@ -19,7 +21,7 @@ public class AccessUserTableDatabase {
     // 表格名稱
     public static final String LIST_TABLE_NAME = "UserTableList";
     public static final String COURSE_TABLE_NAME = "UserCourseTable";
-    public static final String OCCUPIED_TABLE_NAME = "UserSelectedTable";
+    public static final String OCCUPIED_TABLE_NAME = "UserOccupiedTable";
 
     // 編號表格欄位名稱，固定不變
     public static final String KEY_ID = "id";
@@ -27,9 +29,9 @@ public class AccessUserTableDatabase {
     // LIST Column name
     public static final String LIST_NAME_COLUMN = "name";
     public static final String LIST_COMMENT_COLUMN = "comment";
+    public static final String LIST_YEAR_COLUMN = "year";
 
     // Course Column name
-    public static final String COURSE_NAME_COLUMN = "name";
     public static final String COURSE_LIST_ID_COLUMN = "list_id";
     public static final String COURSE_CODE_COLUMN = "code";
 
@@ -42,11 +44,11 @@ public class AccessUserTableDatabase {
             "CREATE TABLE " + LIST_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     LIST_NAME_COLUMN + " TEXT, " +
-                    LIST_COMMENT_COLUMN+ " TEXT)" +
+                    LIST_COMMENT_COLUMN+ " TEXT " +
+                    LIST_YEAR_COLUMN + " TEXT, )" +
             "CREATE TABLE " + COURSE_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COURSE_LIST_ID_COLUMN + " INTEGER, " +
-                    COURSE_NAME_COLUMN + " TEXT, " +
                     COURSE_CODE_COLUMN + " TEXT)" +
             "CREATE TABLE " + OCCUPIED_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -96,7 +98,7 @@ public class AccessUserTableDatabase {
         ContentValues cv = new ContentValues();
 
         cv.put(COURSE_LIST_ID_COLUMN, selectedCourseObject.getListId());
-        cv.put(COURSE_CODE_COLUMN, selectedCourseObject.getCourseCode());
+        cv.put(COURSE_CODE_COLUMN, selectedCourseObject.getCourseCode().toString());
 
         return db.insert(COURSE_TABLE_NAME, null, cv);
 
@@ -130,75 +132,158 @@ public class AccessUserTableDatabase {
         return (db.delete(COURSE_TABLE_NAME, whereCourse , null) > 0 && db.delete(OCCUPIED_TABLE_NAME, whereOccupied, null) > 0);
     }
 
-    public boolean delete(long id)
+    public boolean deleteList(long id)
     {
         String where = KEY_ID + "=" + id;
         String deleteCourseList = COURSE_LIST_ID_COLUMN + "=" + id;
         String deleteOccupied = OCCUPIED_LIST_ID_COLUMN + "=" + id;
 
-        db.delete(COURSE_TABLE_NAME, deleteCourseList, null);
-        db.delete(OCCUPIED_TABLE_NAME, deleteOccupied, null);
-        return true;
+        if(getUserCourseListCount(id) > 0 && !(db.delete(COURSE_TABLE_NAME, deleteCourseList, null) > 0))
+            return false;
+
+        if(getUserOccupiedListCount(id) > 0 && !(db.delete(OCCUPIED_TABLE_NAME, deleteOccupied, null) > 0))
+            return false;
+
+        if(db.delete(LIST_TABLE_NAME, where, null) > 0)
+            return true;
+
+        return false;
 
     }
 
-    // 讀取所有記事資料
-    public List<UserTableObject> getAll() {
-        List<UserTableObject> result = new ArrayList<>();
-        Cursor cursor = db.query(
-                LIST_TABLE_NAME, null, null, null, null, null, null, null);
+    public List<UserTableListItem> getTableList()
+    {
+        List<UserTableListItem> result = new ArrayList<>();
 
-        while (cursor.moveToNext()) {
-            result.add(getRecord(cursor));
+        Cursor cursor = db.query(LIST_TABLE_NAME, null, null, null, null, null, null, null);
+
+        while (cursor.moveToFirst())
+        {
+            result.add(getTableListRecord(cursor));
         }
 
         cursor.close();
+
         return result;
     }
 
-    // 取得指定編號的資料物件
-    public UserTableObject get(long id) {
-        // 準備回傳結果用的物件
-        UserTableObject item = null;
-        // 使用編號為查詢條件
-        String where = KEY_ID + "=" + id;
-        // 執行查詢
-        Cursor result = db.query(
-                , null, where, null, null, null, null, null);
-
-        // 如果有查詢結果
-        if (result.moveToFirst()) {
-            // 讀取包裝一筆資料的物件
-            item = getRecord(result);
-        }
-
-        // 關閉Cursor物件
-        result.close();
-        // 回傳結果
-        return item;
-    }
-
-    // 把Cursor目前的資料包裝為物件
-    public CourseObject getRecord(Cursor cursor) {
-        // 準備回傳結果用的物件
-        CourseObject result = new CourseObject();
+    public UserTableListItem getTableListRecord(Cursor cursor)
+    {
+        UserTableListItem result = new UserTableListItem();
 
         result.setId(cursor.getLong(0));
-        result.setCode(cursor.getString(1));
-        result.setName(cursor.getString(2));
+        result.setName(cursor.getString(1));
+        result.setComment(cursor.getString(2));
         result.setYear(cursor.getString(3));
-        result.setDegree(cursor.getString(4));
-        result.setTeacher(cursor.getString(5));
-        result.setTime(cursor.getString(6));
 
-        // 回傳結果
         return result;
     }
 
-    // 取得資料數量
-    public int getCount() {
+    public  UserTableObject getTable(long id)
+    {
+        UserTableObject result = new UserTableObject();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + LIST_TABLE_NAME + " WHERE " + KEY_ID + "= ?", new String[]{Long.toString(id)});
+
+        result.setId(id);
+        result.setName(cursor.getString(1));
+        result.setComment(cursor.getString(2));
+        result.setYear(cursor.getString(3));
+
+        //get course detail and add to result
+        cursor = db.rawQuery(
+                "SELECT * FROM "+ AccessCourseDatabase.TABLE_NAME +
+                        " WHERE " + AccessCourseDatabase.CODE_COLUMN +
+                        " IN " +
+                        "(SELECT "+ COURSE_CODE_COLUMN + " FROM " + COURSE_TABLE_NAME + " WHERE " + COURSE_LIST_ID_COLUMN + "= ?)" +
+                        " AND " + AccessCourseDatabase.YEAR_COLUMN + "= ?"
+                , new String[] { Long.toString(id), result.getYear().toString() });
+
+        result.setCourseList(new ArrayList<>());
+
+        while (cursor.moveToFirst())
+        {
+            CourseObject course = new CourseObject();
+
+            course.setId(cursor.getLong(0));
+            course.setCode(cursor.getString(1));
+            course.setName(cursor.getString(2));
+            course.setYear(cursor.getString(3));
+            course.setDegree(cursor.getString(4));
+            course.setTeacher(cursor.getString(5));
+            course.setTime(cursor.getString(6));
+
+            result.getCourseList().add(course);
+        }
+
+        //get table occupied
+        cursor = db.rawQuery(
+                "SELECT "+ OCCUPIED_TIME_COLUMN + " FROM " + OCCUPIED_TABLE_NAME +
+                        " WHERE " + OCCUPIED_LIST_ID_COLUMN + "= ?"
+                , new String[] { Long.toString(id) });
+
+        result.setOccupiedTime(new ArrayList<>());
+
+        while (cursor.moveToFirst())
+        {
+            result.getTimeOccupied().add(cursor.getString(0));
+        }
+
+        return result;
+
+    }
+
+    // 取得List數量
+    public int getUserTableListCount() {
         int result = 0;
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + LIST_TABLE_NAME, null);
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
+
+    // 取得CourseList資料數量
+    public int getUserCourseListCount() {
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + COURSE_TABLE_NAME, null);
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
+
+    public int getUserCourseListCount(long listId) {
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + COURSE_TABLE_NAME + " WHERE " + COURSE_LIST_ID_COLUMN + "= ?", new String[]{ Long.toString(listId) });
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
+
+
+    // 取得OccupiedList資料數量
+    public int getUserOccupiedListCount() {
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + OCCUPIED_TABLE_NAME, null);
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
+
+    public int getUserOccupiedListCount(long listId) {
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + OCCUPIED_TABLE_NAME + " WHERE " +  OCCUPIED_LIST_ID_COLUMN + "= ?", new String[]{ Long.toString(listId) });
 
         if (cursor.moveToNext()) {
             result = cursor.getInt(0);

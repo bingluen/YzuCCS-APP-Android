@@ -1,12 +1,10 @@
 package net.erickson.yzucss_app.DataObjects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Erickson on 2015/1/1.
  */
 public class CourseRawData {
+    //DATA是第一次選課前.......
     public static final String [] RAW_DATA_SQL = { "INSERT INTO \"CourseDatabase\" VALUES(1,\'ME108 A\',\'應用力學靜力\',\'1032\',1,\'何旭川(Shiuh-Chuan Her)\',\'106, 107, 108\');",
             "INSERT INTO \"CourseDatabase\" VALUES(2,\'ME108 B\',\'應用力學靜力\',\'1032\',1,\'何旭川(Shiuh-Chuan Her)\',\'206, 207, 208\');",
             "INSERT INTO \"CourseDatabase\" VALUES(3,\'ME108 C\',\'應用力學靜力\',\'1032\',1,\'王謹誠(Chin-Cheng Wang)\',\'211, 212, 213\');",

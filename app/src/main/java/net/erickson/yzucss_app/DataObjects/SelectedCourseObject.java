@@ -9,10 +9,12 @@ import java.util.List;
 public class SelectedCourseObject {
     private long listId;
     private CharSequence courseCode;
+    private CharSequence courseYear;
     private List courseTime;
 
     public SelectedCourseObject(long listid, CourseObject course) {
         listId = listid;
+        courseYear = course.getYear();
         courseCode = course.getCode();
         String[] times = course.getTime().toString().split(",");
         for(int i = 0; i < times.length; i++)
@@ -23,6 +25,7 @@ public class SelectedCourseObject {
 
     public SelectedCourseObject(SelectedCourseObject selectedCourseObject) {
         listId = selectedCourseObject.getListId();
+        courseYear = selectedCourseObject.getCourseYear();
         courseCode = selectedCourseObject.getCourseCode();
         courseTime = new ArrayList<>(selectedCourseObject.getCourseTime());
     }
@@ -32,13 +35,18 @@ public class SelectedCourseObject {
         return listId;
     }
 
-    public String getCourseCode()
+    public CharSequence getCourseCode()
     {
-        return courseCode.toString();
+        return courseCode;
     }
 
     public List getCourseTime()
     {
         return courseTime;
+    }
+
+    public CharSequence getCourseYear()
+    {
+        return courseYear;
     }
 }
