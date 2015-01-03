@@ -78,6 +78,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
         if(s.length() > 0)
         {
             doSearchCourse searchHelper = new doSearchCourse(getActivity());
@@ -89,10 +93,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         displayResult.setResult(result);
         transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_Content, displayResult).commit();
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
     }
 
 

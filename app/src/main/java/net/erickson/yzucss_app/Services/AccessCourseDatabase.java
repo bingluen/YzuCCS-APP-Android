@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Erickson on 2014/12/22.
  */
-public class AccessDatabase {
+public class AccessCourseDatabase {
     // 表格名稱
     public static final String TABLE_NAME = "CourseDatabase";
 
@@ -43,7 +43,7 @@ public class AccessDatabase {
     private SQLiteDatabase db;
 
     // 建構子，一般的應用都不需要修改
-    public AccessDatabase(Context context) {
+    public AccessCourseDatabase(Context context) {
         db = EJSQLHelper.getDatabase(context);
     }
 

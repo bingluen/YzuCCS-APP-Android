@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="searchResultRowCodeWidth">70dp</dimen>
-    <dimen name="searchResultRowNameWidth">200dp</dimen>
+    <dimen name="searchResultRowNameWidth">150dp</dimen>
     <dimen name="searchResultRowDegreeWidth">20dp</dimen>
     <dimen name="searchResultRowTeacherWidth">150dp</dimen>
-    <dimen name="searchResultRowTimeWidth">150dp</dimen>
+    <dimen name="searchResultRowTimeWidth">130dp</dimen>
+    <dimen name="searchResultRowHeight">40dp</dimen>
 </resources>

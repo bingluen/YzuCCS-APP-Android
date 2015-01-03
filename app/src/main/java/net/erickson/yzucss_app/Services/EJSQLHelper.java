@@ -36,7 +36,8 @@ public class EJSQLHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // 建立應用程式需要的表格
-        db.execSQL(AccessDatabase.CREATE_TABLE);
+        db.execSQL(AccessCourseDatabase.CREATE_TABLE);
+        //db.execSQL(AccessUserTableDatabase.CREATE_TABLE);
         // 建立初始資料
         for(int i = 0; i < CourseRawData.RAW_DATA_SQL.length; i++)
             db.execSQL(CourseRawData.RAW_DATA_SQL[i]);
@@ -46,7 +47,7 @@ public class EJSQLHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // 刪除原有的表格
         // 待會再回來完成它
-        db.execSQL("DROP TABLE IF EXISTS " + AccessDatabase.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + AccessCourseDatabase.TABLE_NAME);
         // 呼叫onCreate建立新版的表格
         onCreate(db);
     }

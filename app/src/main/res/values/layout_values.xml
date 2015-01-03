@@ -14,7 +14,6 @@
     <dimen name="myCourseTableListTextSize">12sp</dimen>
 
 
-    <dimen name="searchResultRowHeight">40dp</dimen>
     <dimen name="searchResultRowTextSize">12sp</dimen>
     <dimen name="searchResultRowPadding">3dp</dimen>
 </resources>
