@@ -133,8 +133,12 @@ public class AccessUserTableDatabase {
     public boolean delete(long id)
     {
         String where = KEY_ID + "=" + id;
+        String deleteCourseList = COURSE_LIST_ID_COLUMN + "=" + id;
+        String deleteOccupied = OCCUPIED_LIST_ID_COLUMN + "=" + id;
 
-        db.delete(COURSE_TABLE_NAME, )
+        db.delete(COURSE_TABLE_NAME, deleteCourseList, null);
+        db.delete(OCCUPIED_TABLE_NAME, deleteOccupied, null);
+        return true;
 
     }
 
