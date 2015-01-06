@@ -37,7 +37,9 @@ public class EJSQLHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // 建立應用程式需要的表格
         db.execSQL(AccessCourseDatabase.CREATE_TABLE);
-        //db.execSQL(AccessUserTableDatabase.CREATE_TABLE);
+        db.execSQL(AccessUserTableDatabase.CREATE_LIST_TABLE);
+        db.execSQL(AccessUserTableDatabase.CREATE_COURSE_TABLE);
+        db.execSQL(AccessUserTableDatabase.CREATE_OCCUPIED_TABLE);
         // 建立初始資料
         for(int i = 0; i < CourseRawData.RAW_DATA_SQL.length; i++)
             db.execSQL(CourseRawData.RAW_DATA_SQL[i]);

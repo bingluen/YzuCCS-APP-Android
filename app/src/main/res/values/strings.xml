@@ -12,4 +12,8 @@
     <string name="addTableButton">新增課表</string>
     <string name="searchHintWord">輸入關鍵字搜尋課程</string>
     <string name="myCourseTableTitleText">我的課表</string>
+
+    <string name="addCourseTableRow_tableName">課表名稱</string>
+    <string name="addCourseTableRow_tableComment">備註</string>
+    <string name="addCourseTable_submit_button">新增</string>
 </resources>

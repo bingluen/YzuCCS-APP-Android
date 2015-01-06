@@ -78,21 +78,19 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if(count > 0)
+        {
+            doSearchCourse searchHelper = new doSearchCourse(getActivity());
+            result = searchHelper.search(s.toString());
+            displayResult.setResult(result);
+            transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_Content, displayResult).commit();
+        }
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        if(s.length() > 0)
-        {
-            doSearchCourse searchHelper = new doSearchCourse(getActivity());
-            result = searchHelper.search(s.toString());
-        } else {
-            result = new ArrayList<>();
-        }
 
-        displayResult.setResult(result);
-        transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_Content, displayResult).commit();
     }
 
 

@@ -39,16 +39,18 @@ public class AccessUserTableDatabase {
     public static final String OCCUPIED_TIME_COLUMN = "time";
 
     // 使用上面宣告的變數建立表格的SQL指令
-    public static final String CREATE_TABLE =
+    public static final String CREATE_LIST_TABLE =
             "CREATE TABLE " + LIST_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     LIST_NAME_COLUMN + " TEXT, " +
-                    LIST_COMMENT_COLUMN+ " TEXT " +
-                    LIST_YEAR_COLUMN + " TEXT, )" +
+                    LIST_COMMENT_COLUMN+ " TEXT, " +
+                    LIST_YEAR_COLUMN + " TEXT) ";
+    public static final String CREATE_COURSE_TABLE =
             "CREATE TABLE " + COURSE_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COURSE_LIST_ID_COLUMN + " INTEGER, " +
-                    COURSE_CODE_COLUMN + " TEXT)" +
+                    COURSE_CODE_COLUMN + " TEXT) ";
+    public static final String CREATE_OCCUPIED_TABLE =
             "CREATE TABLE " + OCCUPIED_TABLE_NAME + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     OCCUPIED_LIST_ID_COLUMN + " INTEGER, " +
@@ -73,6 +75,7 @@ public class AccessUserTableDatabase {
 
         cv.put(LIST_NAME_COLUMN, userTableObject.getName().toString());
         cv.put(LIST_COMMENT_COLUMN, userTableObject.getComment().toString());
+        cv.put(LIST_YEAR_COLUMN, userTableObject.getYear().toString());
 
         long id = db.insert(LIST_TABLE_NAME, null, cv);
 
@@ -156,7 +159,7 @@ public class AccessUserTableDatabase {
 
         Cursor cursor = db.query(LIST_TABLE_NAME, null, null, null, null, null, null, null);
 
-        while (cursor.moveToFirst())
+        while (cursor.moveToNext())
         {
             result.add(getTableListRecord(cursor));
         }
@@ -202,7 +205,7 @@ public class AccessUserTableDatabase {
 
         result.setCourseList(new ArrayList<CourseObject>());
 
-        while (cursor.moveToFirst())
+        while (cursor.moveToNext())
         {
             CourseObject course = new CourseObject();
 
@@ -227,7 +230,7 @@ public class AccessUserTableDatabase {
 
         result.setOccupiedTime(new ArrayList<String>());
 
-        while (cursor.moveToFirst())
+        while (cursor.moveToNext())
         {
             result.getTimeOccupied().add(cursor.getString(0));
         }
@@ -297,6 +300,20 @@ public class AccessUserTableDatabase {
     public int getUserOccupiedListCount(long listId) {
         int result = 0;
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + OCCUPIED_TABLE_NAME + " WHERE " +  OCCUPIED_LIST_ID_COLUMN + "= ?", new String[]{ Long.toString(listId) });
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        cursor.close();
+
+        return result;
+    }
+
+    public int getUserTableCount()
+    {
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + LIST_TABLE_NAME, null);
 
         if (cursor.moveToNext()) {
             result = cursor.getInt(0);

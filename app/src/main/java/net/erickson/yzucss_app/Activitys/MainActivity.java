@@ -2,25 +2,32 @@ package net.erickson.yzucss_app.Activitys;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.navdrawer.SimpleSideDrawer;
 
 import net.erickson.yzucss_app.DataObjects.UserTableListItem;
+import net.erickson.yzucss_app.Fragments.AddUserTableFragment;
 import net.erickson.yzucss_app.Fragments.MainFragment;
+import net.erickson.yzucss_app.Fragments.UserTableListFragment;
 import net.erickson.yzucss_app.R;
 import net.erickson.yzucss_app.Services.AccessUserTableDatabase;
 
 import java.util.List;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
 
     private LinearLayout SlidingMenuContent;
     private Button button;
+    private UserTableListFragment userTableListFragment;
+    private AddUserTableFragment addUserTableFragment;
+    private SimpleSideDrawer mSlidingMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -29,7 +36,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         //準備側邊選單
-        SimpleSideDrawer mSlidingMenu = new SimpleSideDrawer(this);
+        mSlidingMenu = new SimpleSideDrawer(this);
         mSlidingMenu.setLeftBehindContentView( R.layout.sliding_menu );
 
         SlidingMenuContent = (LinearLayout) this.findViewById(R.id.sliding_menu);
@@ -54,18 +61,30 @@ public class MainActivity extends FragmentActivity {
         */
         //get table list
         AccessUserTableDatabase tableListHelper = new AccessUserTableDatabase(this);
-        List<UserTableListItem> tableList = tableListHelper.getTableList();
+        if(tableListHelper.getUserTableCount() > 0)
+        {
+            List<UserTableListItem> tableList = tableListHelper.getTableList();
+            userTableListFragment = new UserTableListFragment();
+            userTableListFragment.setUserTableListItems(tableList);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_myCourseTableListItems, userTableListFragment).commit();
+        }
 
         //"new table" button
-        button = new Button(this);
-        button.setText(R.string.addTableButton);
-        button.setBackground(null);
-        button.setTextColor(getResources().getColor(R.color.menuButtonText));
-        button.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.myCourseTableListTextSize));
-        button.setGravity(Gravity.LEFT);
-        button.setGravity(Gravity.CENTER_VERTICAL);
-        button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_grey600_18dp, 0, 0, 0);
-        v.addView(button);
+        button = (Button) findViewById(R.id.addTable);
+        button.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.addTable:
+                addUserTableFragment = new AddUserTableFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Content, addUserTableFragment).commit();
+                mSlidingMenu.toggleDrawer();
+                break;
+        }
     }
 
 

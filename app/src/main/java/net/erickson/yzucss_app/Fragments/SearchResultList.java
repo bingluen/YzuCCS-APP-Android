@@ -22,10 +22,6 @@ public class SearchResultList extends ListFragment {
     private List<CourseObject> searchResult;
     private CourseAdapter courseAdapter;
 
-    public SearchResultList()
-    {
-    }
-
     public void setResult(List<CourseObject> result)
     {
         searchResult = result;

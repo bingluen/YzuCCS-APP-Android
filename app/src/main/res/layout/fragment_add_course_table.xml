@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="@dimen/addCourseTablePadding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/addCourseTableRow_tableName"
+        android:id="@+id/addCourseTableRow_tableName_text"
+        android:layout_margin="@dimen/addCourseTableRowMargin"
+        android:textSize="@dimen/addCourseTableRowText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/addCourseTableRow_tableName"
+        android:layout_margin="@dimen/addCourseTableRowMargin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/addCourseTableRow_tableComment"
+        android:id="@+id/addCourseTableRow_tableComment_text"
+        android:layout_margin="@dimen/addCourseTableRowMargin"
+        android:textSize="@dimen/addCourseTableRowText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addCourseTableRow_tableComment"
+        android:layout_margin="@dimen/addCourseTableRowMargin"
+        android:inputType="none" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addCourseTable_submit_button"
+        android:id="@+id/addCourseTable_submit" />
+
+</LinearLayout>
