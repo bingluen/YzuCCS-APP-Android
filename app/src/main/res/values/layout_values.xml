@@ -22,4 +22,6 @@
     <dimen name="addCourseTableRowMargin">5dp</dimen>
     <dimen name="addCourseTableRowText">20sp</dimen>
 
+    <dimen name="userTable_time_column_width">110dp</dimen>
+
 </resources>
