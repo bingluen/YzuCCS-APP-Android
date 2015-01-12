@@ -6,35 +6,35 @@
 
     <TextView
         android:layout_width="@dimen/searchResultRowCodeWidth"
-        android:layout_height="@dimen/searchResultRowHeight"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_code" />
 
     <TextView
         android:layout_width="@dimen/searchResultRowDegreeWidth"
-        android:layout_height="@dimen/searchResultRowHeight"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_degree" />
 
     <TextView
         android:layout_width="@dimen/searchResultRowNameWidth"
-        android:layout_height="@dimen/searchResultRowHeight"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_name" />
 
     <TextView
         android:layout_width="@dimen/searchResultRowTeacherWidth"
-        android:layout_height="@dimen/searchResultRowHeight"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_professor" />
 
     <TextView
         android:layout_width="@dimen/searchResultRowTimeWidth"
-        android:layout_height="@dimen/searchResultRowHeight"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/searchResultRowTextSize"
         android:padding="@dimen/searchResultRowPadding"
         android:id="@+id/search_result_row_view_course_time" />
