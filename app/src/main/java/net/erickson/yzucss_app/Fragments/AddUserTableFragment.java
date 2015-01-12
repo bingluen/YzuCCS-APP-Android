@@ -54,6 +54,11 @@ public class AddUserTableFragment extends Fragment implements View.OnClickListen
                     AccessUserTableDatabase UTDHelper = new AccessUserTableDatabase(getActivity());
 
                     UTDHelper.CreateUserTable(userTableObject);
+
+                    UserTableFragment userTableFragment = new UserTableFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_Content, userTableFragment);
+                    getFragmentManager().beginTransaction().commit();
+
                 } else {
                     dialog = new AlertDialog.Builder(getActivity());
                     dialog.setTitle(R.string.addCourseTable_dialog_title);

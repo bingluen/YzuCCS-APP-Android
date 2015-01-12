@@ -78,7 +78,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         {
             case R.id.addTable:
                 addUserTableFragment = new AddUserTableFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Content, addUserTableFragment).commit();
+                getSupportFragmentManager().beginTransaction().addToBackStack(null);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Content, addUserTableFragment);
+                getSupportFragmentManager().beginTransaction().commit();
                 mSlidingMenu.toggleDrawer();
                 break;
         }
