@@ -1,10 +1,7 @@
-package net.erickson.yzucss_app.Activitys;
+package net.erickson.yzucss_app.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;

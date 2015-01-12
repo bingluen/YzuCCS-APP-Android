@@ -33,6 +33,7 @@ public class SearchResultList extends ListFragment {
         super.onCreate(savedInstanceState);
         if(searchResult != null && searchResult.size() > 0)
         {
+            setListAdapter(null);
             courseAdapter = new CourseAdapter(getActivity().getLayoutInflater(), searchResult);
             setListAdapter(courseAdapter);
         } else {
