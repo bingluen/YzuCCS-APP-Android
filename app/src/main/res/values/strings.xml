@@ -16,4 +16,8 @@
     <string name="addCourseTableRow_tableName">課表名稱</string>
     <string name="addCourseTableRow_tableComment">備註</string>
     <string name="addCourseTable_submit_button">新增</string>
+    <string name="addCourseTable_dialog_title">提示</string>
+    <string name="addCourseTable_dialog_messages_column_empty">請輸入課表名稱</string>
+
+    <string name="messages_ok">OK</string>
 </resources>

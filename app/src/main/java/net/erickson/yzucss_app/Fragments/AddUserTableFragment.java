@@ -1,5 +1,6 @@
 package net.erickson.yzucss_app.Fragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ public class AddUserTableFragment extends Fragment implements View.OnClickListen
     private EditText tableNameColum;
     private EditText tableCommentColum;
     private Button submitButton;
+    private AlertDialog.Builder dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,14 +44,24 @@ public class AddUserTableFragment extends Fragment implements View.OnClickListen
         switch (v.getId())
         {
             case R.id.addCourseTable_submit:
-                UserTableObject userTableObject = new UserTableObject();
-                userTableObject.setName(tableNameColum.getText());
-                userTableObject.setComment(tableCommentColum.getText());
-                userTableObject.setYear("1032");
+                if(tableNameColum.getText().length() > 0)
+                {
+                    UserTableObject userTableObject = new UserTableObject();
+                    userTableObject.setName(tableNameColum.getText());
+                    userTableObject.setComment(tableCommentColum.getText());
+                    userTableObject.setYear("1032");
 
-                AccessUserTableDatabase UTDHelper = new AccessUserTableDatabase(getActivity());
+                    AccessUserTableDatabase UTDHelper = new AccessUserTableDatabase(getActivity());
 
-                UTDHelper.CreateUserTable(userTableObject);
+                    UTDHelper.CreateUserTable(userTableObject);
+                } else {
+                    dialog = new AlertDialog.Builder(getActivity());
+                    dialog.setTitle(R.string.addCourseTable_dialog_title);
+                    dialog.setIcon(R.drawable.ic_warning_amber_24dp);
+                    dialog.setMessage(R.string.addCourseTable_dialog_messages_column_empty);
+                    dialog.show();
+                }
+
                 break;
         }
     }
