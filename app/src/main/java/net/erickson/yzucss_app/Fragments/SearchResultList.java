@@ -1,6 +1,7 @@
 package net.erickson.yzucss_app.Fragments;
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ public class SearchResultList extends ListFragment {
 
     private List<CourseObject> searchResult;
     private CourseAdapter courseAdapter;
+    private AlertDialog.Builder dialog;
 
     public void setResult(List<CourseObject> result)
     {
@@ -51,7 +53,7 @@ public class SearchResultList extends ListFragment {
 
     @Override
     public void onListItemClick(ListView parent, View v, int position, long id) {
-
-
+        dialog =  new AlertDialog.Builder(getActivity());
+        dialog.setTitle(R.string.addCourse_Title);
     }
 }
