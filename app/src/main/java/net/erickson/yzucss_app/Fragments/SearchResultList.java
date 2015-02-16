@@ -2,17 +2,25 @@ package net.erickson.yzucss_app.Fragments;
 
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import net.erickson.yzucss_app.Activities.MainActivity;
 import net.erickson.yzucss_app.Adapter.CourseAdapter;
 import net.erickson.yzucss_app.DataObjects.CourseObject;
+import net.erickson.yzucss_app.DataObjects.UserTableListItem;
 import net.erickson.yzucss_app.R;
+import net.erickson.yzucss_app.Services.AccessUserTableDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +30,6 @@ public class SearchResultList extends ListFragment {
 
     private List<CourseObject> searchResult;
     private CourseAdapter courseAdapter;
-    private AlertDialog.Builder dialog;
 
     public void setResult(List<CourseObject> result)
     {
@@ -53,7 +60,10 @@ public class SearchResultList extends ListFragment {
 
     @Override
     public void onListItemClick(ListView parent, View v, int position, long id) {
-        dialog =  new AlertDialog.Builder(getActivity());
-        dialog.setTitle(R.string.addCourse_Title);
+        Bundle args = new Bundle();
+        args.putLong("courseId", id);
+        AddCourseToUserTable dialog = new AddCourseToUserTable();
+        dialog.show(getActivity().getFragmentManager(), (String) getResources().getText(R.string.addCourse_Title));
     }
+
 }
