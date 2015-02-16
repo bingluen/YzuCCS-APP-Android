@@ -19,7 +19,10 @@
     <string name="addCourseTable_dialog_title">提示</string>
     <string name="addCourseTable_dialog_messages_column_empty">請輸入課表名稱</string>
 
-    <string name="addCourse_Title">增加到課表?</string>
+    <string name="addCourse_Title">請選擇要加入的課表</string>
 
-    <string name="messages_ok">OK</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_message">提示</string>
+    <string name="dialog_noUserTable">還沒有新增課表喔</string>
 </resources>

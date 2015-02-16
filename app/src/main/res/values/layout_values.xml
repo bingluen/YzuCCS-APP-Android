@@ -24,4 +24,6 @@
 
     <dimen name="userTable_time_column_width">110dp</dimen>
 
+    <dimen name="button_margin">10dp</dimen>
+
 </resources>
