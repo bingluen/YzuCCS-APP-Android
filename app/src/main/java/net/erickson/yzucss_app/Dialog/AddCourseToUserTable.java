@@ -20,12 +20,13 @@ import java.util.List;
  */
 public class AddCourseToUserTable extends DialogFragment {
 
-    List<UserTableListItem> tables;
-    ArrayList mSelectedTable;
+    private List<UserTableListItem> tables;
+    private ArrayList mSelectedTable;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-
+        super.onCreateDialog(savedInstanceState);
         //prepare courseTable
         AccessUserTableDatabase tableHelper = new AccessUserTableDatabase(getActivity());
         tables = tableHelper.getTableList();

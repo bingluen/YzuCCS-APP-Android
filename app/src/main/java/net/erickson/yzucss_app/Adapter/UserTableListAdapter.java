@@ -28,6 +28,24 @@ public class UserTableListAdapter extends BaseAdapter {
         this.inflater = inflater;
     }
 
+    public void deleteTable(long id)
+    {
+        for(int i = 0; i < data.size(); i++)
+        {
+            if(data.get(i).getId() == id)
+            {
+                data.remove(i);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void addTable(UserTableListItem item)
+    {
+        data.add(data.size()-1, item);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount()
     {

@@ -69,6 +69,7 @@ public class UserTableListFragment extends ListFragment {
         if(userTableListItems.get(position).getId() == -1)
         {
             AddUserTableDialog addUserTableDialog = new AddUserTableDialog();
+            addUserTableDialog.setUserTableListAdapter(userTableListAdapter);
             addUserTableDialog.show(getActivity().getFragmentManager(),
                     (String) getResources().getText(R.string.addCourseTable_dialog_title));
         }
@@ -88,6 +89,7 @@ public class UserTableListFragment extends ListFragment {
                 args.putLong("deleteListId", userTableListItems.get(position).getId());
                 args.putCharSequence("deleteListName", userTableListItems.get(position).getName());
                 DeleteUserTableDialog deleteUserTableDialog = new DeleteUserTableDialog();
+                deleteUserTableDialog.setUserTableListAdapter(userTableListAdapter);
                 deleteUserTableDialog.setArguments(args);
                 deleteUserTableDialog.show(getActivity().getFragmentManager(), "deleteCourseDialog");
                 return false;
