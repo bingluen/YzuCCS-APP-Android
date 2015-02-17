@@ -1,26 +1,18 @@
 package net.erickson.yzucss_app.Fragments;
 
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import net.erickson.yzucss_app.Activities.MainActivity;
 import net.erickson.yzucss_app.Adapter.CourseAdapter;
 import net.erickson.yzucss_app.DataObjects.CourseObject;
-import net.erickson.yzucss_app.DataObjects.UserTableListItem;
+import net.erickson.yzucss_app.Dialog.AddCourseToUserTable;
 import net.erickson.yzucss_app.R;
-import net.erickson.yzucss_app.Services.AccessUserTableDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,6 +55,7 @@ public class SearchResultList extends ListFragment {
         Bundle args = new Bundle();
         args.putLong("courseId", id);
         AddCourseToUserTable dialog = new AddCourseToUserTable();
+        dialog.setArguments(args);
         dialog.show(getActivity().getFragmentManager(), (String) getResources().getText(R.string.addCourse_Title));
     }
 

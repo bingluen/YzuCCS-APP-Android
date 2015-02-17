@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="@dimen/addCourseTablePadding">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/addCourseTableRow_tableName"
+        android:layout_margin="@dimen/addCourseTableRowMargin"
+        android:hint="@string/addCourseTableRow_tableName" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addCourseTableRow_tableComment"
+        android:layout_margin="@dimen/addCourseTableRowMargin"
+        android:inputType="none"
+        android:hint="@string/addCourseTableRow_tableComment" />
+
+</LinearLayout>

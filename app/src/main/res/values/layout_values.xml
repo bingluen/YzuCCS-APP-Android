@@ -18,7 +18,7 @@
     <dimen name="searchResultRowTextSize">12sp</dimen>
     <dimen name="searchResultRowPadding">3dp</dimen>
 
-    <dimen name="addCourseTablePadding">30dp</dimen>
+    <dimen name="addCourseTablePadding">5dp</dimen>
     <dimen name="addCourseTableRowMargin">5dp</dimen>
     <dimen name="addCourseTableRowText">20sp</dimen>
 

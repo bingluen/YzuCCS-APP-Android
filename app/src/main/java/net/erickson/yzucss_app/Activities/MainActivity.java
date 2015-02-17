@@ -2,6 +2,7 @@ package net.erickson.yzucss_app.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -9,7 +10,7 @@ import android.widget.LinearLayout;
 import com.navdrawer.SimpleSideDrawer;
 
 import net.erickson.yzucss_app.DataObjects.UserTableListItem;
-import net.erickson.yzucss_app.Fragments.AddUserTableFragment;
+import net.erickson.yzucss_app.Dialog.AddUserTableDialog;
 import net.erickson.yzucss_app.Fragments.MainFragment;
 import net.erickson.yzucss_app.Fragments.UserTableListFragment;
 import net.erickson.yzucss_app.R;
@@ -17,13 +18,13 @@ import net.erickson.yzucss_app.Services.AccessUserTableDatabase;
 
 import java.util.List;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener {
+public class MainActivity extends FragmentActivity {
 
 
     private LinearLayout SlidingMenuContent;
     private Button button;
     private UserTableListFragment userTableListFragment;
-    private AddUserTableFragment addUserTableFragment;
+    //private AddUserTableFragment addUserTableFragment;
     private SimpleSideDrawer mSlidingMenu;
 
     @Override
@@ -58,32 +59,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         */
         //get table list
         AccessUserTableDatabase tableListHelper = new AccessUserTableDatabase(this);
-        if(tableListHelper.getUserTableCount() > 0)
-        {
-            List<UserTableListItem> tableList = tableListHelper.getTableList();
-            userTableListFragment = new UserTableListFragment();
-            userTableListFragment.setUserTableListItems(tableList);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_myCourseTableListItems, userTableListFragment).commit();
-        }
-
-        //"new table" button
-        button = (Button) findViewById(R.id.addTable);
-        button.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v)
-    {
-        switch (v.getId())
-        {
-            case R.id.addTable:
-                addUserTableFragment = new AddUserTableFragment();
-                getSupportFragmentManager().beginTransaction().addToBackStack(null);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Content, addUserTableFragment);
-                getSupportFragmentManager().beginTransaction().commit();
-                mSlidingMenu.toggleDrawer();
-                break;
-        }
+        List<UserTableListItem> tableList = tableListHelper.getTableList();
+        UserTableListItem addButton = new UserTableListItem();
+        addButton.setName(getText(R.string.addTableButton));
+        addButton.setId(-1);
+        tableList.add(addButton);
+        userTableListFragment = new UserTableListFragment();
+        userTableListFragment.setUserTableListItems(tableList);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_myCourseTableListItems, userTableListFragment, "myCourseTableList").commit();
     }
 
 

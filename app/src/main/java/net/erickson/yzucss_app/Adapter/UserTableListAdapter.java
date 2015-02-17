@@ -1,5 +1,6 @@
 package net.erickson.yzucss_app.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,12 @@ public class UserTableListAdapter extends BaseAdapter {
     private List<UserTableListItem> data;
     private LayoutInflater inflater;
     private ViewHolder holder;
+    private Context context;
 
-    public UserTableListAdapter(LayoutInflater inflater, List<UserTableListItem> Data)
+    public UserTableListAdapter(Context context, LayoutInflater inflater, List<UserTableListItem> Data)
     {
         data = Data;
+        this.context = context;
         this.inflater = inflater;
     }
 
@@ -45,6 +48,13 @@ public class UserTableListAdapter extends BaseAdapter {
         }
 
         holder.name.setText(getItem(position).getName());
+        if(getItemId(position) == -1)
+        {
+            //holder.name.setCompoundDrawables();
+            holder.name.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.drawable.ic_add_box_grey600_18dp), null, null, null);
+        } else {
+            holder.name.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        }
 
 
         return convertView;

@@ -1,4 +1,4 @@
-package net.erickson.yzucss_app.Fragments;
+package net.erickson.yzucss_app.Dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

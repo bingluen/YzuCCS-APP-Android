@@ -34,15 +34,5 @@
             android:id="@+id/fragment_myCourseTableListItems"
             android:orientation="vertical"></LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addTableButton"
-            android:textColor="@color/menuButtonText"
-            android:textSize="@dimen/myCourseTableListTextSize"
-            android:background="@null"
-            android:drawableLeft="@drawable/ic_add_box_grey600_18dp"
-            android:id="@+id/addTable" />
-
     </LinearLayout>
 </LinearLayout>
