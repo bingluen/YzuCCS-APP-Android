@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="searchResultRowCodeWidth">50dp</dimen>
-    <dimen name="searchResultRowNameWidth">90dp</dimen>
-    <dimen name="searchResultRowDegreeWidth">20dp</dimen>
-    <dimen name="searchResultRowTeacherWidth">80dp</dimen>
-    <dimen name="searchResultRowTimeWidth">80dp</dimen>
-    <dimen name="searchResultRowHeight">60dp</dimen>
-</resources>

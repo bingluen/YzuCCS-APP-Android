@@ -12,11 +12,14 @@
     <dimen name="myCourseTableTitleTextSize">15sp</dimen>
     <dimen name="myCourseTableTitleTextPadding">5dp</dimen>
     <dimen name="myCourseTableListTextSize">16sp</dimen>
+    <dimen name="myCourseTableList_RowHeight">30dp</dimen>
 
     <dimen name="myCourseTableListTextPadding">10dp</dimen>
 
     <dimen name="searchResultRowTextSize">12sp</dimen>
-    <dimen name="searchResultRowPadding">3dp</dimen>
+    <dimen name="searchResultRowPadding">5dp</dimen>
+    <dimen name="searchResult_panel_padding_topBottom">10dp</dimen>
+    <dimen name="searchResult_panel_padding_leftRight">20dp</dimen>
 
     <dimen name="addCourseTablePadding">5dp</dimen>
     <dimen name="addCourseTableRowMargin">5dp</dimen>

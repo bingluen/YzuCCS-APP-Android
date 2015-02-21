@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:baselineAligned="false">
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:paddingLeft="@dimen/searchResult_panel_padding_leftRight"
+    android:paddingRight="@dimen/searchResult_panel_padding_leftRight"
+    android:paddingTop="@dimen/searchResult_panel_padding_topBottom"
+    android:paddingBottom="@dimen/searchResult_panel_padding_topBottom">
 
-    <TextView
-        android:layout_width="@dimen/searchResultRowCodeWidth"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/searchResultRowTextSize"
-        android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_code" />
+        android:measureWithLargestChild="true"
+        android:background="@color/barBackground"
+        android:padding="@dimen/searchResultRowPadding">
 
-    <TextView
-        android:layout_width="@dimen/searchResultRowDegreeWidth"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/searchResultRowTextSize"
-        android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_degree" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/searchResultRowTextSize"
+            android:id="@+id/search_result_row_view_course_code"
+            android:textColor="@android:color/white" />
 
-    <TextView
-        android:layout_width="@dimen/searchResultRowNameWidth"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/searchResultRowTextSize"
-        android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_name" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/searchResultRowTextSize"
+            android:id="@+id/search_result_row_view_course_name"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
-    <TextView
-        android:layout_width="@dimen/searchResultRowTeacherWidth"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/searchResultRowTextSize"
-        android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_professor" />
+        android:background="@drawable/shadow"
+        android:padding="@dimen/searchResultRowPadding">
 
-    <TextView
-        android:layout_width="@dimen/searchResultRowTimeWidth"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/searchResultRowTextSize"
-        android:padding="@dimen/searchResultRowPadding"
-        android:id="@+id/search_result_row_view_course_time" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/searchResultRowTextSize"
+            android:padding="@dimen/searchResultRowPadding"
+            android:id="@+id/search_result_row_view_course_professor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/searchResultRowTextSize"
+            android:padding="@dimen/searchResultRowPadding"
+            android:id="@+id/search_result_row_view_course_degree" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/searchResultRowTextSize"
+            android:padding="@dimen/searchResultRowPadding"
+            android:id="@+id/search_result_row_view_course_time" />
+    </LinearLayout>
+
+
 </LinearLayout>

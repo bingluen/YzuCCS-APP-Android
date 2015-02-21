@@ -88,7 +88,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Text
         searchHelper = new doSearchCourse(getActivity());
         if(s.length() > 0)
         {
-            result = searchHelper.search(s.toString());
+            result = searchHelper.search(s.toString(), "1032");
             displayResult.setResult(result);
         }
         transaction = getFragmentManager().beginTransaction();

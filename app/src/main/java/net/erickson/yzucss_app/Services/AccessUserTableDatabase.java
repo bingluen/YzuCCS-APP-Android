@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by Erickson on 2015/1/3.
+ * 管理使用者課表
  */
 public class AccessUserTableDatabase {
     // 表格名稱

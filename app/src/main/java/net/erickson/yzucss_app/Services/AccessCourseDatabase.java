@@ -174,10 +174,10 @@ public class AccessCourseDatabase {
     }
 
     //byTeacher
-    public List<CourseObject> getbyTeacher(String key) {
+    public List<CourseObject> getByTeacher(String key, String year) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "teacher LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "teacher LIKE ? AND year = ?", new String[]{"%"+key+"%", year}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -187,10 +187,10 @@ public class AccessCourseDatabase {
         return result;
     }
 
-    public List<CourseObject> getbyCode(String key) {
+    public List<CourseObject> getByCode(String key, String year) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "code LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "code LIKE ? AND year = ?", new String[]{"%"+key+"%", year}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -200,10 +200,10 @@ public class AccessCourseDatabase {
         return result;
     }
 
-    public List<CourseObject> getbyTime(String key) {
+    public List<CourseObject> getByTime(String key, String year) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "time LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "time LIKE ? AND year = ?", new String[]{"%"+key+"%", year}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -213,10 +213,10 @@ public class AccessCourseDatabase {
         return result;
     }
 
-    public List<CourseObject> getbyName(String key) {
+    public List<CourseObject> getByName(String key, String year) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "cname LIKE ?", new String[]{"%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "cname LIKE ? AND year = ?", new String[]{"%"+key+"%", year}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -226,10 +226,11 @@ public class AccessCourseDatabase {
         return result;
     }
 
-    public List<CourseObject> getbyFullTextSearch(String key) {
+    public List<CourseObject> getByFullTextSearch(String key, String year) {
         List<CourseObject> result = new ArrayList<>();
         Cursor cursor = db.query(
-                TABLE_NAME, null, "cname LIKE ? OR teacher LIKE ? OR time LIKE ? OR code LIKE ? LIMIT 50", new String[]{"%"+key+"%", "%"+key+"%", "%"+key+"%", "%"+key+"%"}, null, null, null);
+                TABLE_NAME, null, "(cname LIKE ? OR teacher LIKE ? OR time LIKE ? OR code LIKE ?) AND year = ? LIMIT 50",
+                new String[]{"%"+key+"%", "%"+key+"%", "%"+key+"%", "%"+key+"%", year}, null, null, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));

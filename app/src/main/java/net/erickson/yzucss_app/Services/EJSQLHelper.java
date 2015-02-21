@@ -8,6 +8,7 @@ import net.erickson.yzucss_app.Resource.CourseRawData;
 
 /**
  * Created by Erickson on 2014/12/22.
+ * 資料庫小幫手^_<
  */
 public class EJSQLHelper extends SQLiteOpenHelper {
     // 資料庫名稱

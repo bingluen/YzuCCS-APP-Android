@@ -1,5 +1,6 @@
 package net.erickson.yzucss_app.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,13 @@ public class CourseAdapter extends BaseAdapter {
     private List<CourseObject> data;
     private LayoutInflater inflater;
     private ViewHolder holder;
+    private Context context;
 
-    public CourseAdapter(LayoutInflater inflater, List<CourseObject> Data)
+    public CourseAdapter(Context context, LayoutInflater inflater, List<CourseObject> Data)
     {
         data = Data;
         this.inflater = inflater;
+        this.context = context;
     }
 
     @Override
@@ -51,10 +54,10 @@ public class CourseAdapter extends BaseAdapter {
         }
 
         holder.code.setText(getItem(position).getCode());
-        holder.degree.setText(getItem(position).getDegree());
+        holder.degree.setText(context.getResources().getText(R.string.searchResultColumn_degree).toString() + getItem(position).getDegree());
         holder.name.setText(getItem(position).getName());
-        holder.professor.setText(getItem(position).getTeacher());
-        holder.time.setText(getItem(position).getTime());
+        holder.professor.setText(context.getResources().getText(R.string.searchResultColumn_teacher).toString() + getItem(position).getTeacher());
+        holder.time.setText(context.getResources().getText(R.string.searchResultColumn_time).toString() + getItem(position).getTime());
 
 
         return convertView;

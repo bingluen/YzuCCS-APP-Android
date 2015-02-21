@@ -35,7 +35,7 @@ public class SearchResultList extends ListFragment {
         if(searchResult != null && searchResult.size() > 0)
         {
             setListAdapter(null);
-            courseAdapter = new CourseAdapter(getActivity().getLayoutInflater(), searchResult);
+            courseAdapter = new CourseAdapter(getActivity(), getActivity().getLayoutInflater(), searchResult);
             setListAdapter(courseAdapter);
         } else {
             //清空
@@ -47,7 +47,7 @@ public class SearchResultList extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.list, container, false);
+        return inflater.inflate(R.layout.search_result_list, container, false);
     }
 
     @Override

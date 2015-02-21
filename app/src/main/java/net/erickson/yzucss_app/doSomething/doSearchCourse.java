@@ -17,10 +17,10 @@ public class doSearchCourse {
     {
         DBHelper = new AccessCourseDatabase(context);
     }
-    public List<CourseObject> search(String keyword)
+    public List<CourseObject> search(String keyword, String year)
     {
         List<CourseObject> result = new ArrayList<>();
-        result.addAll(DBHelper.getbyFullTextSearch(keyword));
+        result.addAll(DBHelper.getByFullTextSearch(keyword, year));
         return result;
     }
 }
