@@ -25,7 +25,9 @@
     <dimen name="addCourseTableRowMargin">5dp</dimen>
     <dimen name="addCourseTableRowText">20sp</dimen>
 
-    <dimen name="userTable_time_column_width">110dp</dimen>
+    <dimen name="userTable_row_height">60dp</dimen>
+    <dimen name="userTable_time_column_width">100dp</dimen>
+    <dimen name="userTable_inner_padding">5dp</dimen>
 
     <dimen name="button_margin">10dp</dimen>
 

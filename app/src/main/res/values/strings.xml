@@ -2,13 +2,6 @@
 <resources>
 
     <string name="app_name">元智大選課模擬系統</string>
-    <string name="action_settings">Settings</string>
-    <string name="day1">Mon.</string>
-    <string name="day2">Tue.</string>
-    <string name="day3">Wed.</string>
-    <string name="day4">Thu.</string>
-    <string name="day5">Fri.</string>
-    <string name="day6">Sat.</string>
     <string name="addTableButton">新增課表</string>
     <string name="searchHintWord">輸入關鍵字搜尋課程</string>
     <string name="myCourseTableTitleText">我的課表</string>
@@ -32,4 +25,30 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_message">提示</string>
     <string name="dialog_noUserTable">還沒有新增課表喔</string>
+
+
+    <string-array name="text_week_day">
+        <item>Mon.</item>
+        <item>Tue.</item>
+        <item>Wed.</item>
+        <item>Thu.</item>
+        <item>Fri.</item>
+        <item>Sat.</item>
+    </string-array>
+    
+    <string-array name="text_class_time">
+        <item>08:10 ~ 09:00</item>
+        <item>09:10 ~ 10:00</item>
+        <item>10:10 ~ 11:00</item>
+        <item>11:10 ~ 12:00</item>
+        <item>12:10 ~ 13:00</item>
+        <item>13:10 ~ 14:00</item>
+        <item>14:10 ~ 15:00</item>
+        <item>15:10 ~ 16:00</item>
+        <item>16:10 ~ 17:00</item>
+        <item>17:10 ~ 18:00</item>
+        <item>18:30 ~ 19:20</item>
+        <item>19:30 ~ 20:20</item>
+        <item>20:30 ~ 21:20</item>
+    </string-array>
 </resources>
