@@ -90,7 +90,7 @@ public class AccessUserTableDatabase {
         long id = InsertSelectedCourse(selectedCourseObject);
         for(int i = 0; i < selectedCourseObject.getCourseTime().size(); i++)
         {
-            MarkOccupiedTime(Integer.valueOf(selectedCourseObject.getCourseTime().get(i).toString()));
+            MarkOccupiedTime((int)selectedCourseObject.getCourseTime().get(i));
         }
 
         return (id > 0);
