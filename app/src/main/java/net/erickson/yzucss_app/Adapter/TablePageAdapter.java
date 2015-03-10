@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import net.erickson.yzucss_app.Fragments.UserTableDayFragment;
+import net.erickson.yzucss_app.Fragments.UserTableViewFragment;
 import net.erickson.yzucss_app.R;
 
 /**
@@ -15,6 +16,7 @@ import net.erickson.yzucss_app.R;
 public class TablePageAdapter extends FragmentPagerAdapter {
 
     private Context context;
+    private static final UserTableDayFragment userTableDayFragment = new UserTableDayFragment();
 
     public TablePageAdapter(FragmentManager fm, Context context)
     {
@@ -25,7 +27,7 @@ public class TablePageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i)
     {
-        return new UserTableDayFragment();
+        return userTableDayFragment.newInstance(i);
     }
 
     @Override

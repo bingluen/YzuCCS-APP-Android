@@ -10,17 +10,19 @@ public class SelectedCourseObject {
     private long listId;
     private CharSequence courseCode;
     private CharSequence courseYear;
-    private List courseTime;
+    private ArrayList courseTime;
 
     public SelectedCourseObject(long listid, CourseObject course) {
         listId = listid;
         courseYear = course.getYear();
         courseCode = course.getCode();
-        String[] times = course.getTime().toString().split(",");
+        courseTime = new ArrayList();
+        String[] times = course.getTime().toString().split(", *");
         for(int i = 0; i < times.length; i++)
         {
             courseTime.add(Integer.valueOf(times[i]));
         }
+
     }
 
     public SelectedCourseObject(SelectedCourseObject selectedCourseObject) {

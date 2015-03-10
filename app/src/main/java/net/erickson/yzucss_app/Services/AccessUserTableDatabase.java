@@ -189,6 +189,7 @@ public class AccessUserTableDatabase {
         Cursor cursor = db.rawQuery("SELECT * FROM " + LIST_TABLE_NAME + " WHERE " + KEY_ID + "= ?", new String[]{Long.toString(id)});
 
         result.setId(id);
+        cursor.moveToNext();
         result.setName(cursor.getString(1));
         result.setComment(cursor.getString(2));
         result.setYear(cursor.getString(3));

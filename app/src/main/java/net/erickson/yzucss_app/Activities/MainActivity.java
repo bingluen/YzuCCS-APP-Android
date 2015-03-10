@@ -66,6 +66,7 @@ public class MainActivity extends FragmentActivity {
         tableList.add(addButton);
         userTableListFragment = new UserTableListFragment();
         userTableListFragment.setUserTableListItems(tableList);
+        userTableListFragment.setSlidingMenu(mSlidingMenu);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_myCourseTableListItems, userTableListFragment, "myCourseTableList").commit();
     }
 

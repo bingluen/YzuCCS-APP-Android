@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.navdrawer.SimpleSideDrawer;
 
 import net.erickson.yzucss_app.Adapter.UserTableListAdapter;
 import net.erickson.yzucss_app.DataObjects.UserTableListItem;
@@ -27,10 +30,19 @@ public class UserTableListFragment extends ListFragment {
 
     private List<UserTableListItem> userTableListItems;
     private UserTableListAdapter userTableListAdapter;
+    private UserTableViewFragment userTableViewFragment;
+    AccessUserTableDatabase UTDHelper;
+    SimpleSideDrawer mSlidingMenu;
+    FragmentTransaction transaction;
 
     public UserTableListFragment()
     {
         super();
+    }
+
+    public void setSlidingMenu(SimpleSideDrawer slidingMenu)
+    {
+        mSlidingMenu = slidingMenu;
     }
 
     public UserTableListFragment(List userTableListItems)
@@ -72,8 +84,19 @@ public class UserTableListFragment extends ListFragment {
             addUserTableDialog.setUserTableListAdapter(userTableListAdapter);
             addUserTableDialog.show(getActivity().getFragmentManager(),
                     (String) getResources().getText(R.string.addCourseTable_dialog_title));
-        }
 
+        } else {
+            if(mSlidingMenu != null)
+            {
+                mSlidingMenu.toggleDrawer();
+            }
+            UTDHelper = new AccessUserTableDatabase(getActivity());
+            userTableViewFragment = new UserTableViewFragment();
+            userTableViewFragment.setTableData(UTDHelper.getTable(userTableListItems.get(position).getId()));
+            transaction = getFragmentManager().beginTransaction();
+            transaction.addToBackStack("before_view_table");
+            transaction.replace(R.id.fragment_Content, userTableViewFragment).commit();
+        }
 
     }
 
