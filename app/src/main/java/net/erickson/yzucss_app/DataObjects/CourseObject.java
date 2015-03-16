@@ -24,6 +24,17 @@ public class CourseObject {
         this.year = year;
     }
 
+    public CourseObject(CourseObject copySource)
+    {
+        this.id = copySource.getId();
+        this.name = copySource.getName();
+        this.code = copySource.getCode();
+        this.teacher = copySource.getTeacher();
+        this.time = copySource.getTime();
+        this.degree = copySource.getDegree();
+        this.year = copySource.getYear();
+    }
+
     public CourseObject()
     {
     }

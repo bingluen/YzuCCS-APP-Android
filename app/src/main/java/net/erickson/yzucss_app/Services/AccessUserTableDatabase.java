@@ -90,7 +90,7 @@ public class AccessUserTableDatabase {
         long id = InsertSelectedCourse(selectedCourseObject);
         for(int i = 0; i < selectedCourseObject.getCourseTime().size(); i++)
         {
-            MarkOccupiedTime((int)selectedCourseObject.getCourseTime().get(i));
+            MarkOccupiedTime(selectedCourseObject.getListId() ,(int)selectedCourseObject.getCourseTime().get(i));
         }
 
         return (id > 0);
@@ -107,10 +107,11 @@ public class AccessUserTableDatabase {
 
     }
 
-    private long MarkOccupiedTime(int occupiedTime)
+    private long MarkOccupiedTime(long listId, int occupiedTime)
     {
         ContentValues cv = new ContentValues();
 
+        cv.put(OCCUPIED_LIST_ID_COLUMN, listId);
         cv.put(OCCUPIED_TIME_COLUMN, occupiedTime);
 
         return db.insert(OCCUPIED_TABLE_NAME, null, cv);

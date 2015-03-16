@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.Fragments.UserTableDayFragment;
 import net.erickson.yzucss_app.Fragments.UserTableViewFragment;
 import net.erickson.yzucss_app.R;
@@ -17,6 +18,7 @@ public class TablePageAdapter extends FragmentPagerAdapter {
 
     private Context context;
     private static final UserTableDayFragment userTableDayFragment = new UserTableDayFragment();
+    private CourseObject[][] dailyCourse;
 
     public TablePageAdapter(FragmentManager fm, Context context)
     {
@@ -24,10 +26,15 @@ public class TablePageAdapter extends FragmentPagerAdapter {
         this.context = context;
     }
 
+    public void setDailyCourse(CourseObject[][] dailyCourse)
+    {
+        this.dailyCourse = dailyCourse;
+    }
+
     @Override
     public Fragment getItem(int i)
     {
-        return userTableDayFragment.newInstance(i);
+        return userTableDayFragment.newInstance(i, dailyCourse[i]);
     }
 
     @Override

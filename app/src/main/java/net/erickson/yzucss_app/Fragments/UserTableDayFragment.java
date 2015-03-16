@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import net.erickson.yzucss_app.DataObjects.CourseObject;
 import net.erickson.yzucss_app.R;
 
 import org.w3c.dom.Text;
@@ -16,16 +17,19 @@ import org.w3c.dom.Text;
  * Created by Erickson on 2015/2/24.
  * UserTableDayFragment
  */
+
 public class UserTableDayFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private CourseObject[] todayCourse;
 
-    public UserTableDayFragment newInstance(int sectionNumber)
+    public UserTableDayFragment newInstance(int sectionNumber, CourseObject[] todayCourse)
     {
         UserTableDayFragment fragment = new UserTableDayFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
+        this.todayCourse = todayCourse;
         return fragment;
     }
 
@@ -40,6 +44,7 @@ public class UserTableDayFragment extends Fragment {
         day.setText(dayLabel[getArguments().getInt(ARG_SECTION_NUMBER, 0)]);
         for(int i = 0; i < timeLabel.length; i++)
         {
+            //放時間欄位
             View frame = inflater.inflate(R.layout.user_table_time_field, timeColumn, false);
             TextView text = (TextView) frame.findViewById(R.id.timeField);
             TextView session = (TextView) frame.findViewById(R.id.sessionTime);
@@ -53,6 +58,9 @@ public class UserTableDayFragment extends Fragment {
                 session.setTextColor(getResources().getColor(R.color.mainBackground));
             }
             timeColumn.addView(frame);
+
+            //倒入課表
+
         }
         return rootView;
     }
